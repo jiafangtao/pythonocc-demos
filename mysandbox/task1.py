@@ -2,10 +2,8 @@
 # This task takes in a step file and shows it, as well offers exporting it as glTF format.
 #
 
-import os
 import random
 
-from OCC.Core.BRep import BRep_Builder
 from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.Display.SimpleGui import init_display
 from OCC.Extend.DataExchange import read_step_file
