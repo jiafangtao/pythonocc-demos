@@ -1,5 +1,5 @@
 #
-# This task takes in a step file and shows it, as well offers exporting it as glTF format.
+# Task 1: this script takes in a step file and shows it, as well offers exporting it as glTF format.
 #
 
 import random
