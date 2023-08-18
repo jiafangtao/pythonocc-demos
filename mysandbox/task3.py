@@ -65,7 +65,7 @@ def location_increase_x(event=None):
         #display.DisplayShape(new_box)
                 
         # clean previous AIS shape off screen
-        display.Context.Erase(ais_shape, True)
+        display.Context.Remove(ais_shape, False)
         ais_shape = display.DisplayShape(new_box)[0]
         shape_holder['ais_box'] = ais_shape
         #display.Context.SetLocation(ais_shape, aCubeToploc)
@@ -154,10 +154,21 @@ def display_mode_shaded(event=None):
 def display_mode_wireframe(event=None):
     display.Context.SetDisplayMode(0, True)
 
-def clean_all(event=None):
+def hide_all(event=None):
     display.EraseAll()
     global shape_holder
     shape_holder = dict()
+
+def display_all(event=None):
+    display.Context.DisplayAll(True)
+
+def print_location(event=None):
+    global shape_holder
+    ais_box = shape_holder.get("ais_box")
+    if ais_box:
+        loc = display.Context.Location(ais_box)
+        printLoc(loc)
+        dir(ais_box)
 
 #
 # views
@@ -202,6 +213,8 @@ if __name__ == "__main__":
     add_function_to_menu("Mode", display_mode_wireframe)
 
     add_menu("Others")
-    add_function_to_menu("Others", clean_all)
+    add_function_to_menu("Others", hide_all)
+    add_function_to_menu("Others", display_all)
+    add_function_to_menu("Others", print_location)
 
     start_display()
